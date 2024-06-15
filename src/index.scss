@@ -1,14 +1,51 @@
 @import "./variables.scss";
 
 :root {
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
     font-weight: 400;
-    font-size: 22px;
+    font-size: 24px;
 
+    font-family: "Sen", sans-serif;
+    font-optical-sizing: auto;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
 }
 
 html {
@@ -18,6 +55,25 @@ html {
 
 .reg-page {
     text-align: center;
+    margin-top: 2em;
+
+    h1 {
+        font-size: 3em;
+    }
+
+    >p {
+        font-size: 1.5em;
+        width: 50%;
+        margin: 0 auto;
+        margin-bottom: 1em
+    }
+
+}
+
+.flex-centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .accent-color {
@@ -25,65 +81,74 @@ html {
 }
 
 .registerbtn {
-    width: 70%;
-    padding: .7em;
+    width: 100%;
+    padding-inline: .7em;
+    padding-block: .2em;
     margin: 0 auto;
     color: $background-color;
     background-color: $accent-color;
     border: solid 2px transparent;
     border-radius: 10px;
     font-size: 1.5em;
-    transition: all .3s;
+    transition: all $transiton-time;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-
-    .fa-arrow-right {
-        opacity: 0;
-        // transform: translateX(5vw);
-        right: 0;
-        font-size: 1.2em;
-        color: $background-color;
-        transition: all .5s;
-        position: absolute;
-    }
 }
 
 .registerbtn:hover {
-    background-color: darken($accent-color, 20%);
-}
-
-.registerbtn:hover .fa-arrow-right {
-    opacity: 1;
-    right: 15%;
+    // transform: translateY(-3px);
+    background-color: darken($accent-color, 25%);
 }
 
 .reg-form-container {
-    width: 25%;
+    max-width: 25%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     background-color: $main-color;
-    padding: 3em;
+    padding: 2em;
     border-radius: 20px;
+
+
+    >div {
+        max-width: 100%;
+        // border: solid 1px coral;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    i {
+        margin-right: 1em;
+    }
 
     button {
         margin-top: 1em;
     }
 
     input {
-        margin-block: 2em;
+        padding: 1em;
+        padding-left: .7em;
+        margin-block: 1em;
+        color: $darker-text-color;
+        flex-grow: 1;
+        transition: all $transiton-time;
         height: 30px;
         background-color: inherit;
-        border: solid 2px #fff;
-        padding: .5em;
+        border: solid 2px $darker-text-color;
         border-radius: 10px;
-        caret-color: #fff
+        caret-color: $darker-text-color;
+    }
+
+    input:hover {
+        border: solid 2px $text-color;
     }
 
     input:focus {
         outline: none;
+        border: solid 2px $text-color;
     }
 }
