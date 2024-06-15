@@ -16,13 +16,15 @@ export default function Register() {
                     </div>
                     <div>
                         <i className="fa-solid fa-lock"></i>
-                        <input type="password" placeholder="Enter Password" name="psw" id="psw" required />
+                        <input type="password" placeholder="Password" name="psw" id="psw" required />
+                        <a className='forgot-password-link'>Forgot password?</a>
                     </div>
                     <div>
                         <i className="fa-solid fa-lock"></i>
                         <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required />
                     </div>
                     <button type="submit" className="registerbtn">Sign up</button>
+                    <a href="" className='log-in-link'>Or <span className='accent-color'>log in</span>, if you have an account</a>
                 </div>
             </form>
         </section>

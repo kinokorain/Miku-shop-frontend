@@ -38,6 +38,11 @@ select {
     font: inherit;
 }
 
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
 p,
 h1,
 h2,
@@ -85,6 +90,7 @@ html {
     padding-inline: .7em;
     padding-block: .2em;
     margin: 0 auto;
+    margin-bottom: .3em;
     color: $background-color;
     background-color: $accent-color;
     border: solid 2px transparent;
@@ -112,6 +118,32 @@ html {
     padding: 2em;
     border-radius: 20px;
 
+    .forgot-password-link {
+        margin-top: 0.2em;
+        color: $darker-text-color;
+        text-align: right;
+        font-size: .8em;
+        transition: all $transiton-time;
+        width: fit-content;
+        align-self: flex-end;
+        position: absolute;
+        right: 0;
+        top: 75px;
+    }
+
+    .forgot-password-link:hover {
+        color: darken($darker-text-color, 25%);
+    }
+
+    span {
+        transition: all .3s;
+    }
+
+    span:hover {
+        color: darken($accent-color, 30%);
+        // color: $darker-text-color;
+
+    }
 
     >div {
         max-width: 100%;
@@ -119,6 +151,7 @@ html {
         display: flex;
         justify-content: center;
         align-items: center;
+        position: relative;
     }
 
     i {

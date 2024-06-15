@@ -3,10 +3,10 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = Register;
+exports.default = Login;
 var _react = _interopRequireDefault(require("react"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-function Register() {
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function Login() {
   return /*#__PURE__*/_react.default.createElement("section", {
     className: "reg-page"
   }, /*#__PURE__*/_react.default.createElement("h1", null, /*#__PURE__*/_react.default.createElement("span", {
@@ -29,11 +29,13 @@ function Register() {
     className: "fa-solid fa-lock"
   }), /*#__PURE__*/_react.default.createElement("input", {
     type: "password",
-    placeholder: "Enter Password",
+    placeholder: "Password",
     name: "psw",
     id: "psw",
     required: true
-  })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("i", {
+  }), /*#__PURE__*/_react.default.createElement("a", {
+    className: "forgot-password-link"
+  }, "Forgot password?")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("i", {
     className: "fa-solid fa-lock"
   }), /*#__PURE__*/_react.default.createElement("input", {
     type: "password",
@@ -44,5 +46,10 @@ function Register() {
   })), /*#__PURE__*/_react.default.createElement("button", {
     type: "submit",
     className: "registerbtn"
-  }, "Sign up"))));
+  }, "Sign up"), /*#__PURE__*/_react.default.createElement("a", {
+    href: "",
+    className: "log-in-link"
+  }, "Or ", /*#__PURE__*/_react.default.createElement("span", {
+    className: "accent-color"
+  }, "log in"), ", if you have an account"))));
 }
