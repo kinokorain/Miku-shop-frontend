@@ -1,0 +1,89 @@
+@import "./variables.scss";
+
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    font-size: 22px;
+
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+    background-color: $background-color;
+    color: $text-color;
+}
+
+.reg-page {
+    text-align: center;
+}
+
+.accent-color {
+    color: $accent-color;
+}
+
+.registerbtn {
+    width: 70%;
+    padding: .7em;
+    margin: 0 auto;
+    color: $background-color;
+    background-color: $accent-color;
+    border: solid 2px transparent;
+    border-radius: 10px;
+    font-size: 1.5em;
+    transition: all .3s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    .fa-arrow-right {
+        opacity: 0;
+        // transform: translateX(5vw);
+        right: 0;
+        font-size: 1.2em;
+        color: $background-color;
+        transition: all .5s;
+        position: absolute;
+    }
+}
+
+.registerbtn:hover {
+    background-color: darken($accent-color, 20%);
+}
+
+.registerbtn:hover .fa-arrow-right {
+    opacity: 1;
+    right: 15%;
+}
+
+.reg-form-container {
+    width: 25%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    background-color: $main-color;
+    padding: 3em;
+    border-radius: 20px;
+
+    button {
+        margin-top: 1em;
+    }
+
+    input {
+        margin-block: 2em;
+        height: 30px;
+        background-color: inherit;
+        border: solid 2px #fff;
+        padding: .5em;
+        border-radius: 10px;
+        caret-color: #fff
+    }
+
+    input:focus {
+        outline: none;
+    }
+}
