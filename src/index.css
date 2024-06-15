@@ -147,7 +147,7 @@ html {
   top: 75px;
 }
 .reg-form-container .forgot-password-link:hover {
-  color: #6f6f6f;
+  color: #fff;
 }
 .reg-form-container span {
   -webkit-transition: all 0.3s;
