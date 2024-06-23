@@ -8,7 +8,7 @@ var _react = _interopRequireDefault(require("react"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function Login() {
   return /*#__PURE__*/_react.default.createElement("section", {
-    className: "reg-page"
+    className: "login-page"
   }, /*#__PURE__*/_react.default.createElement("h1", null, /*#__PURE__*/_react.default.createElement("span", {
     className: "accent-color"
   }, "Miku"), " Notes"), /*#__PURE__*/_react.default.createElement("p", null, "Your notes and to-do lists, always at hand.", /*#__PURE__*/_react.default.createElement("br", null), "Simple, fast, ", /*#__PURE__*/_react.default.createElement("span", {

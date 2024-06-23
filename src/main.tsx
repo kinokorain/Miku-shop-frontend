@@ -7,12 +7,23 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import ErrorPage from './ErrorPage';
-
+import Login from './routes/Login/Login.tsx';
+import Hub from './routes/Hub/Hub.tsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Register />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/hub",
+    element: <Hub />,
     errorElement: <ErrorPage />,
   },
 ]);
