@@ -1,0 +1,34 @@
+.header {
+    background-color: cornflowerblue;
+    text-align: center;
+
+    .flex {
+        justify-content: center;
+        gap: 5em;
+    }
+}
+
+.flex {
+    display: flex;
+}
+
+aside {
+    background-color: indianred;
+
+    .note-list {
+        li {
+            margin: 0em;
+            margin-left: 0;
+            border: solid #fff 1px;
+            list-style: none;
+        }
+    }
+}
+
+.note-container {
+    background-color: lightblue;
+    flex: 1;
+    h2 {
+        text-align: center;
+    }
+}
