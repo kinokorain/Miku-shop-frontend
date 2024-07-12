@@ -1,5 +1,4 @@
-import React from 'react'
-import { Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from 'react';
 
 export default function Register() {

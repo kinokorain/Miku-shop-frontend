@@ -13,7 +13,7 @@
 *::before,
 *::after {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 * {
@@ -60,10 +60,12 @@ html {
   text-align: center;
   margin-top: 2em;
 }
+
 .reg-page h1 {
   font-size: 3em;
 }
-.reg-page > p {
+
+.reg-page>p {
   font-size: 1.5em;
   width: 50%;
   margin: 0 auto;
@@ -75,11 +77,11 @@ html {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .accent-color {
@@ -104,11 +106,11 @@ html {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   position: relative;
 }
 
@@ -124,12 +126,13 @@ html {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   background-color: #0B3535;
   padding: 2em;
   border-radius: 20px;
 }
+
 .reg-form-container .forgot-password-link {
   margin-top: 0.2em;
   color: #afafaf;
@@ -141,48 +144,55 @@ html {
   width: -moz-fit-content;
   width: fit-content;
   -ms-flex-item-align: end;
-      align-self: flex-end;
+  align-self: flex-end;
   position: absolute;
   right: 0;
   top: 75px;
 }
+
 .reg-form-container .forgot-password-link:hover {
   color: #fff;
 }
+
 .reg-form-container span {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
+
 .reg-form-container span:hover {
   color: #15a0a0;
 }
-.reg-form-container > div {
+
+.reg-form-container>div {
   max-width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
 }
+
 .reg-form-container i {
   margin-right: 1em;
 }
+
 .reg-form-container button {
   margin-top: 1em;
 }
+
 .reg-form-container input {
   padding: 1em;
   padding-left: 0.7em;
   margin-block: 1em;
   color: #afafaf;
   -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
   height: 30px;
@@ -191,9 +201,11 @@ html {
   border-radius: 10px;
   caret-color: #afafaf;
 }
+
 .reg-form-container input:hover {
   border: solid 2px #fff;
 }
+
 .reg-form-container input:focus {
   outline: none;
   border: solid 2px #fff;
