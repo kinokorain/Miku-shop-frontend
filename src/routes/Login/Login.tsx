@@ -1,18 +1,23 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
+// import { redirect } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
     document.querySelector(".registerbtn")?.addEventListener("click", (e) => {
         e.preventDefault();
     })
+
     function LoginUser() {
-        async function sendRegInfo() {
-            const response = await fetch("http://localhost:33033/login", {
+        async function sendLoginInfo() {
+            const response = await fetch("http://localhost:3030/login", {
                 method: "POST",
                 headers: {
                     "content-type": "application/json"
                 },
+                credentials: "include",
                 body: JSON.stringify({
                     "email": email,
                     "password": password
@@ -20,8 +25,13 @@ export default function Login() {
             })
             const body = await response.json();
             console.log(body);
+            if (body.success === true) {
+                console.log("redirecting");
+                navigate("/hub");
+            }
         }
-        sendRegInfo();
+
+        sendLoginInfo();
     }
     return (
         <section className='reg-page'>

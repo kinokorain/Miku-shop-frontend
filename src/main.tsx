@@ -9,6 +9,7 @@ import {
 import ErrorPage from './ErrorPage';
 import Login from './routes/Login/Login.tsx';
 import Notes from './routes/Notes/Notes.tsx';
+import Hub from './routes/Hub/Hub.tsx';
 
 const router = createBrowserRouter([
   {
@@ -21,11 +22,11 @@ const router = createBrowserRouter([
     element: <Login />,
     errorElement: <ErrorPage />,
   },
-  // {
-  //   path: "/hub",
-  //   element: <Hub />,
-  //   errorElement: <ErrorPage />,
-  // },
+  {
+    path: "/hub",
+    element: <Hub />,
+    errorElement: <ErrorPage />,
+  },
   {
     path: "/notes",
     element: <Notes />,

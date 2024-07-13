@@ -210,3 +210,13 @@ html {
   outline: none;
   border: solid 2px #fff;
 }
+
+.registerbtn:disabled {
+  /* background-color: #afafaf; */
+  filter: grayscale(1);
+}
+
+.registerbtn:disabled:hover {
+  filter: grayscale(1);
+  background-color: #63EBEB;
+}

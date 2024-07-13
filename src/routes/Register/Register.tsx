@@ -11,11 +11,12 @@ export default function Register() {
 
     function RegUser() {
         async function sendRegInfo() {
-            const response = await fetch("http://localhost:33033/register", {
+            const response = await fetch("http://localhost:3030/register", {
                 method: "POST",
                 headers: {
                     "content-type": "application/json"
                 },
+                credentials: "include",
                 body: JSON.stringify({
                     "email": email,
                     "password": password
@@ -48,9 +49,12 @@ export default function Register() {
                         <i className="fa-solid fa-lock"></i>
                         <input onChange={(e) => setRepeatPassword(e.target.value)} type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required />
                     </div>
-                    <button onClick={RegUser} type="submit" className="registerbtn">
+                    {password === repeatPassword ? <button onClick={RegUser} type="submit" className="registerbtn">
                         Sign up
-                    </button>
+                    </button> : <button disabled type="submit" className="registerbtn">
+                        Sign up
+                    </button>}
+
                     <Link to="/login" className='log-in-link'>Or <span className='accent-color'>log in</span>, if you have an account</Link>
                 </div>
             </form>
