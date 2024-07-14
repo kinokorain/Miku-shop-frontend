@@ -120,6 +120,7 @@ html {
 
 .reg-form-container {
   max-width: 25%;
+  min-width: 300px;
   margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -131,6 +132,7 @@ html {
   background-color: #0B3535;
   padding: 2em;
   border-radius: 20px;
+  gap: 3em;
 }
 
 .reg-form-container .forgot-password-link {
@@ -188,7 +190,6 @@ html {
 .reg-form-container input {
   padding: 1em;
   padding-left: 0.7em;
-  margin-block: 1em;
   color: #afafaf;
   -webkit-box-flex: 1;
   -ms-flex-positive: 1;
@@ -200,6 +201,7 @@ html {
   border: solid 2px #afafaf;
   border-radius: 10px;
   caret-color: #afafaf;
+  width: 70%;
 }
 
 .reg-form-container input:hover {

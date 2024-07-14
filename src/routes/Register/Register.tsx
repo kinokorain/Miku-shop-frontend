@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
+
 
 export default function Register() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [repeatPassword, setRepeatPassword] = useState("");
+    const navigate = useNavigate();
     document.querySelector(".registerbtn")?.addEventListener("click", (e) => {
         e.preventDefault();
     })
@@ -24,6 +27,10 @@ export default function Register() {
             })
             const body = await response.json();
             console.log(body);
+            if (body.success === true) {
+                console.log("redirecting");
+                navigate("/hub");
+            }
         }
         sendRegInfo();
     }

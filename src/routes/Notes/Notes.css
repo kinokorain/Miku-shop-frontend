@@ -1,5 +1,5 @@
 .header {
-    background-color: cornflowerblue;
+    /* background-color: cornflowerblue; */
     text-align: center;
 }
 
@@ -17,7 +17,7 @@
 }
 
 aside {
-    background-color: indianred;
+    /* background-color: indianred; */
 }
 
 aside .note-list li {
@@ -28,7 +28,7 @@ aside .note-list li {
 }
 
 .note-container {
-    background-color: lightblue;
+    /* background-color: lightblue; */
     -webkit-box-flex: 1;
     -ms-flex: 1;
     flex: 1;
