@@ -1,11 +1,13 @@
 import { useState } from "react";
 
-export default function Note() {
+export default function Note(props: { currentNoteId: number }) {
     const [text, setText] = useState("");
     const [title, setTitle] = useState("");
-    async function createNote() {
-        const response = await fetch("http://localhost:3030/notes", {
-            method: "POST",
+    async function updateNote() {
+        console.log(props.currentNoteId);
+        const url = "http://localhost:3030/notes/" + props.currentNoteId;
+        const response = await fetch(url, {
+            method: "PATCH",
             headers: {
                 "content-type": "application/json"
             },
@@ -27,7 +29,7 @@ export default function Note() {
             <input type="text" className="note-text" onChange={(e) => {
                 setText(e.target.value);
             }} />
-            <button onClick={createNote}>Create note</button>
+            <button onClick={updateNote}>Save note</button>
         </div>
     );
 }

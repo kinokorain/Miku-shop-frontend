@@ -3,9 +3,11 @@ import Aside from "./Aside/Aside";
 import Note from "./Note/Note";
 import { useEffect, useState } from "react";
 import './Notes.css'
+import NoteType from "../../Types/Note.ts"
 
 export default function Notes() {
-    const [currentNoteId, setCurrentNoteId] = useState();
+    const [currentNoteId, setCurrentNoteId] = useState(0);
+
     async function getNotes() {
         const response = await fetch("http://localhost:3030/notes", {
             method: "GET",
@@ -37,9 +39,15 @@ export default function Notes() {
         })
         const body = await response.json();
         console.log(body);
+        const data: NoteType | null = body.data;
+        if (data !== null) {
+            setCurrentNoteId(data.id);
+            console.log(data.id);
+        }
     }
 
     function handleCreatingNote() {
+        createNote();
         console.log("in creatingNote");
     }
 
@@ -48,7 +56,7 @@ export default function Notes() {
             <Header handleCreatingNote={handleCreatingNote} />
             <div className="flex">
                 <Aside />
-                <Note />
+                <Note currentNoteId={currentNoteId} />
             </div>
         </>
     );
