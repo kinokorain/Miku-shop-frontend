@@ -29,6 +29,11 @@ export default function Notes() {
         console.log("in useEffect")
     }, [])
 
+    function updateNoteList() {
+        getNotes();
+        setCurrentNoteId(0);
+    }
+
     async function createNote() {
         const response = await fetch("http://localhost:3030/notes", {
             method: "POST",
@@ -60,7 +65,7 @@ export default function Notes() {
             <Header handleCreatingNote={handleCreatingNote} />
             <div className="flex">
                 <Aside currentNoteList={currentNoteList} />
-                <Note currentNoteId={currentNoteId} getNotes={getNotes} />
+                <Note currentNoteId={currentNoteId} updateNoteList={updateNoteList} />
             </div>
         </>
     );

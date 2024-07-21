@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Note(props: { currentNoteId: number, getNotes: () => void }) {
+export default function Note(props: { currentNoteId: number, updateNoteList: () => void }) {
     const [text, setText] = useState("");
     const [title, setTitle] = useState("");
     async function updateNote() {
@@ -20,16 +20,25 @@ export default function Note(props: { currentNoteId: number, getNotes: () => voi
         const body = await response.json();
         console.log(body);
     }
+
+    function handleSaveClick() {
+        updateNote();
+        console.log("in handleSaveClick");
+        props.updateNoteList();
+
+    }
     return (
         <div className="note-container">
-            {props.currentNoteId === 0 ? <></> : <input type="text" className="note-heading" onChange={(e) => {
-                setTitle(e.target.value);
-            }} />}
-            <span>17.03.17</span>
-            {props.currentNoteId === 0 ? <></> : <input type="text" className="note-text" onChange={(e) => {
+            <div>
+                {props.currentNoteId === 0 ? <></> : <input type="text" className="note-heading" onChange={(e) => {
+                    setTitle(e.target.value);
+                }} />}
+                <span>17.03.17</span>
+            </div>
+            {props.currentNoteId === 0 ? <></> : <textarea className="note-text" onChange={(e) => {
                 setText(e.target.value);
             }} />}
-            <button onClick={updateNote}>Save note</button>
+            {props.currentNoteId === 0 ? <></> : <button onClick={handleSaveClick}>Save note</button>}
         </div >
     );
 }

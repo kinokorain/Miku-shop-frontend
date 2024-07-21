@@ -1,6 +1,8 @@
 .header {
     /* background-color: cornflowerblue; */
     text-align: center;
+    outline: solid 1px cornflowerblue;
+
 }
 
 .header .flex {
@@ -14,6 +16,8 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    outline: solid 1px cornflowerblue;
+    height: 100%;
 }
 
 aside {
@@ -32,8 +36,30 @@ aside .note-list li {
     -webkit-box-flex: 1;
     -ms-flex: 1;
     flex: 1;
+    outline: solid 1px coral;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+
 }
 
 .note-container h2 {
     text-align: center;
+}
+
+ul {
+    padding: 0;
+}
+
+.note-container>div {
+    align-self: center;
+}
+
+.note-container>button {
+    max-width: 30%;
+    align-self: center;
+}
+
+.NotePage {
+    outline: solid 5px cornflowerblue;
 }
