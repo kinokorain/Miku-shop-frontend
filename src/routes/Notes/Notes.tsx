@@ -61,12 +61,10 @@ export default function Notes() {
     }
 
     return (
-        <>
+        <div className="notes-page-container">
             <Header handleCreatingNote={handleCreatingNote} />
-            <div className="flex">
-                <Aside currentNoteList={currentNoteList} />
-                <Note currentNoteId={currentNoteId} updateNoteList={updateNoteList} />
-            </div>
-        </>
+            <Aside currentNoteList={currentNoteList} />
+            <Note currentNoteId={currentNoteId} updateNoteList={updateNoteList} />
+        </div>
     );
 }
