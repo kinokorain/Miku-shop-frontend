@@ -1,18 +1,12 @@
-import React from "react";
+import NoteType from "../../../Types/Note.ts"
 
-export default function Aside() {
+export default function Aside(props: { currentNoteList: NoteType[] }) {
     return (
         <aside>
             <ul className="note-list">
-                <li>Some note Heading</li>
-                <li>Some note Heading</li>
-                <li>Some note Heading</li>
-                <li>Some note Heading</li>
-                <li>Some note Heading</li>
-                <li>Some note Heading</li>
-                <li>Some note Heading</li>
-                <li>Some note Heading</li>
-                <li>Some note Heading</li>
+                {props.currentNoteList.map((note) => {
+                    return <li>{note.title}</li>
+                })}
             </ul>
         </aside>
     );

@@ -7,6 +7,7 @@ import NoteType from "../../Types/Note.ts"
 
 export default function Notes() {
     const [currentNoteId, setCurrentNoteId] = useState(0);
+    const [currentNoteList, setCurrentNoteList] = useState<NoteType[]>([]);
 
     async function getNotes() {
         const response = await fetch("http://localhost:3030/notes", {
@@ -18,6 +19,9 @@ export default function Notes() {
         })
         const body = await response.json();
         console.log(body);
+        const noteList: NoteType[] = body.data.notes;
+        console.log("note list:", noteList);
+        setCurrentNoteList(noteList);
     }
 
     useEffect(() => {
@@ -55,8 +59,8 @@ export default function Notes() {
         <>
             <Header handleCreatingNote={handleCreatingNote} />
             <div className="flex">
-                <Aside />
-                <Note currentNoteId={currentNoteId} />
+                <Aside currentNoteList={currentNoteList} />
+                <Note currentNoteId={currentNoteId} getNotes={getNotes} />
             </div>
         </>
     );
