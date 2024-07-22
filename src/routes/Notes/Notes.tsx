@@ -53,6 +53,7 @@ export default function Notes() {
             setCurrentNoteId(data.id);
             console.log(data.id);
         }
+        getNotes();
     }
 
     function handleCreatingNote() {

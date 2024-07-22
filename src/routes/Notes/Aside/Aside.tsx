@@ -5,7 +5,12 @@ export default function Aside(props: { currentNoteList: NoteType[] }) {
         <aside>
             <ul className="note-list">
                 {props.currentNoteList.map((note) => {
-                    return <li>{note.title}</li>
+                    if (note.title == "") {
+                        return <li>-</li>
+                    }
+                    else {
+                        return <li>{note.title}</li>
+                    }
                 })}
             </ul>
         </aside>

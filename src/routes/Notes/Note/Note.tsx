@@ -18,13 +18,18 @@ export default function Note(props: { currentNoteId: number, updateNoteList: () 
             credentials: "include",
         })
         const body = await response.json();
-        console.log(body);
+        console.log("body in updateNote:", body);
     }
 
-    function handleSaveClick() {
-        updateNote();
-        console.log("in handleSaveClick");
-        props.updateNoteList();
+    async function handleSaveClick() {
+        try {
+            await updateNote();
+            console.log("in handleSaveClick");
+            props.updateNoteList();
+        }
+        catch (error) {
+            console.log("error in handleSaveClick");
+        }
 
     }
     return (
