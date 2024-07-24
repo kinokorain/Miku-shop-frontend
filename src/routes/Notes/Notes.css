@@ -1,17 +1,20 @@
 .header {
-    background-color: cornflowerblue;
+    /* background-color: cornflowerblue; */
     text-align: center;
     /* outline: solid 1px cornflowerblue; */
     /* grid-area: header; */
     grid-column-start: 1;
     grid-column-end: 5;
+    border: solid #fff 1px;
 }
 
 aside {
-    background-color: indianred;
+    /* background-color: indianred; */
     /* grid-area: aside; */
     grid-column-start: 1;
     grid-column-end: 2;
+    border: solid #fff 1px;
+    overflow-y: scroll;
 }
 
 aside .note-list li {
@@ -19,10 +22,11 @@ aside .note-list li {
     margin-left: 0;
     border: solid #fff 1px;
     list-style: none;
+    padding: .5em;
 }
 
 .note-container {
-    background-color: lightblue;
+    /* background-color: lightblue; */
     /* outline: solid 1px coral; */
     display: flex;
     flex-direction: column;
@@ -30,6 +34,7 @@ aside .note-list li {
     /* grid-area: note; */
     grid-column-start: 2;
     grid-column-end: 5;
+    border: solid #fff 1px;
 }
 
 .note-container h2 {
@@ -47,6 +52,10 @@ ul {
 .note-container>button {
     max-width: 30%;
     align-self: center;
+}
+
+.active-note {
+    background-color: #0B3535;
 }
 
 .notes-page-container {

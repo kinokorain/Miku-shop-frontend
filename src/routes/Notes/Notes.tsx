@@ -6,7 +6,17 @@ import './Notes.css'
 import NoteType from "../../Types/Note.ts"
 
 export default function Notes() {
-    const [currentNoteId, setCurrentNoteId] = useState(0);
+    const [currentNote, setCurrentNote] = useState<NoteType>({
+        created: 0,
+        files: [],
+        id: 0,
+        last_edited: 0,
+        tags: [],
+        text: "",
+        times_edited: 0,
+        title: "",
+        user_id: 0
+    });
     const [currentNoteList, setCurrentNoteList] = useState<NoteType[]>([]);
 
     async function getNotes() {
@@ -29,9 +39,20 @@ export default function Notes() {
         console.log("in useEffect")
     }, [])
 
+
     function updateNoteList() {
         getNotes();
-        setCurrentNoteId(0);
+        setCurrentNote({
+            created: 0,
+            files: [],
+            id: 0,
+            last_edited: 0,
+            tags: [],
+            text: "",
+            times_edited: 0,
+            title: "",
+            user_id: 0
+        });
     }
 
     async function createNote() {
@@ -50,7 +71,7 @@ export default function Notes() {
         console.log(body);
         const data: NoteType | null = body.data;
         if (data !== null) {
-            setCurrentNoteId(data.id);
+            setCurrentNote(data);
             console.log(data.id);
         }
         getNotes();
@@ -61,11 +82,16 @@ export default function Notes() {
         console.log("in creatingNote");
     }
 
+    function handleChoosingNote(note: NoteType) {
+        console.log(note);
+        setCurrentNote(note);
+    }
+
     return (
         <div className="notes-page-container">
             <Header handleCreatingNote={handleCreatingNote} />
-            <Aside currentNoteList={currentNoteList} />
-            <Note currentNoteId={currentNoteId} updateNoteList={updateNoteList} />
+            <Aside currentNoteList={currentNoteList} handleChoosingNote={handleChoosingNote} />
+            <Note currentNote={currentNote} updateNoteList={updateNoteList} />
         </div>
     );
 }
