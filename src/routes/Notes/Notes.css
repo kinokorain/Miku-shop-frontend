@@ -30,11 +30,11 @@ aside .note-list li {
     /* outline: solid 1px coral; */
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
     /* grid-area: note; */
     grid-column-start: 2;
     grid-column-end: 5;
     border: solid #fff 1px;
+
 }
 
 .note-container h2 {
@@ -46,12 +46,37 @@ ul {
 }
 
 .note-container>div {
-    align-self: center;
+    width: 100%;
 }
 
 .note-container>button {
     max-width: 30%;
     align-self: center;
+}
+
+.note-text {
+    color: #fff;
+    min-height: 80%;
+    background-color: #031111;
+}
+
+
+.note-heading {
+    color: #fff;
+    font-size: 1.5em;
+    background-color: #031111;
+    width: 100%;
+}
+
+/* .flex-input-container {
+    display: flex;
+    align-items: center;
+} */
+
+
+.note-text:focus,
+.note-heading:focus {
+    outline: none;
 }
 
 .active-note {

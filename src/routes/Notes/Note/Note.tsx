@@ -71,12 +71,11 @@ export default function Note(props: { currentNote: NoteType, updateNoteList: () 
 
     return (
         <div className="note-container">
-            <div>
+            <div className="flex-input-container">
                 {
                     props.currentNote.id === 0 ? <></> : <input value={title} type="text" className="note-heading" onChange={(e) => {
                         setTitle(e.target.value);
                     }} />}
-                <span>17.03.17</span>
             </div>
             {
                 props.currentNote.id === 0 ? <></> : <textarea value={text} className="note-text" onChange={(e) => {
