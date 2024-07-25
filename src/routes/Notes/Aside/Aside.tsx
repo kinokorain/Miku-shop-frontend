@@ -1,7 +1,18 @@
 import NoteType from "../../../Types/Note.ts"
 
 export default function Aside(props: { currentNoteList: NoteType[], handleChoosingNote: (note: NoteType) => void }) {
-    console.log(document.getElementsByClassName("note-list-item"));
+
+    //highliting the chosen li element
+    const noteListItems = document.querySelectorAll(".note-list-item");
+    noteListItems.forEach((element) => {
+        element.addEventListener("click", () => {
+            noteListItems.forEach((element) => {
+                element.classList.remove("active-note")
+            })
+            element.classList.add("active-note");
+        });
+    })
+
 
     return (
         <aside>
