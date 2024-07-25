@@ -13,7 +13,6 @@ export default function Aside(props: { currentNoteList: NoteType[], handleChoosi
         });
     })
 
-
     return (
         <aside>
             <ul className="note-list">
