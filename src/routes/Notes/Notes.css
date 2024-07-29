@@ -60,7 +60,6 @@ ul {
     background-color: #031111;
 }
 
-
 .note-heading {
     color: #fff;
     font-size: 1.5em;
@@ -94,4 +93,28 @@ ul {
     ; */
     height: 100vh;
     width: 100%;
+}
+
+.delete-popup {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color: #00000043;
+    text-align: center;
+}
+
+.delete-popup div {
+    background-color: #0B3535;
+    padding: 2em;
+    border-radius: 10px;
+}
+
+.delete-popup button {
+    margin-inline: .5em;
+    margin-top: 1em;
 }

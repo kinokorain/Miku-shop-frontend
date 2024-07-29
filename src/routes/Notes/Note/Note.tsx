@@ -84,9 +84,11 @@ export default function Note(props: { currentNote: NoteType, updateNoteList: () 
             {props.currentNote.id === 0 ? <></> : <button onClick={handleSaveClick}>Save note</button>}
             {props.currentNote.id === 0 ? <></> : <button onClick={togglePopup}>Delete note</button>}
             {popupVisible ? <div className="delete-popup">
-                <p>are you sure?</p>
-                <button onClick={togglePopup}>cancel</button>
-                <button onClick={handleDeleteNote} >delete</button>
+                <div>
+                    <p>are you sure?</p>
+                    <button onClick={togglePopup}>cancel</button>
+                    <button onClick={handleDeleteNote} >delete</button>
+                </div>
             </div> : <></>}
         </div >
     );

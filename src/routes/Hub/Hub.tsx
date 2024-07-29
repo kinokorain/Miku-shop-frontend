@@ -6,10 +6,13 @@ export default function Hub() {
     const navigate = useNavigate();
 
     return (
-        <>
-            <h1>Hub</h1>
-            <button onClick={() => { navigate("/notes"); }}>Noutes</button>
-            <button>Shewf</button>
-        </>
+        <section className="hub">
+            <h2>Hub</h2>
+            <div className="button-container">
+                <button className="hub-button" onClick={() => { navigate("/notes"); }}>Noutes</button>
+                <button className="hub-button">Shewf</button>
+            </div>
+
+        </section>
     )
 }

@@ -223,3 +223,52 @@ html {
   filter: grayscale(1);
   background-color: #63EBEB;
 }
+
+/* hub */
+
+.hub {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.hub h2 {
+  font-size: 4em;
+}
+
+.hub .button-container {
+  display: flex;
+  gap: 1em;
+}
+
+.hub-button {
+  width: 100%;
+  padding-inline: 0.7em;
+  padding-block: 0.2em;
+  margin: 0 auto;
+  margin-bottom: 0.3em;
+  color: #031111;
+  background-color: #63EBEB;
+  border: solid 2px transparent;
+  border-radius: 10px;
+  font-size: 1.5em;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: relative;
+}
+
+.hub-button:hover {
+  background-color: #17b7b7;
+}
