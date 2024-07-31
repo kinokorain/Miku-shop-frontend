@@ -1,11 +1,11 @@
 
-export default function Header(props: { handleCreatingNote: () => void, handleSearchInput: (e: any) => void, handleSearching: () => void }) {
+export default function Header(props: { handleCreatingNote: () => void, handleSearchInput: (e: any) => void, handleSearching: (e) => void }) {
     return (
         <header className="header">
-            <div>
+            <form>
                 <input type="search" onChange={props.handleSearchInput} />
-                <button onClick={props.handleSearching}>sewch</button>
-            </div>
+                <button type="submit" onClick={(e) => props.handleSearching(e)}>sewch</button>
+            </form>
             <div className="flex">
                 <button onClick={props.handleCreatingNote}>+</button>
                 <div>fiwters</div>

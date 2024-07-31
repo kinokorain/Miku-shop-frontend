@@ -61,7 +61,8 @@ export default function Notes() {
         }
     }
 
-    function handleSearching() {
+    function handleSearching(e: Event) {
+        e.preventDefault();
         console.log(currentSearchQuery);
         getNotes(constructUrl());
     }
