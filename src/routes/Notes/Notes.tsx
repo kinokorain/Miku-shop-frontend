@@ -18,9 +18,20 @@ export default function Notes() {
         user_id: 0
     });
     const [currentNoteList, setCurrentNoteList] = useState<NoteType[]>([]);
+    const [currentSearchQuery, setCurrentSearchQuery] = useState<string>("");
 
-    async function getNotes() {
-        const response = await fetch("http://localhost:3030/notes", {
+    //function for constructing url of request to API
+    function constructUrl() {
+        const baseUrl = "http://localhost:3030/notes";
+        const searchQuery = "?title=" + currentSearchQuery
+        let requestUrl: string;
+        // eslint-disable-next-line prefer-const
+        requestUrl = baseUrl + searchQuery;
+        return requestUrl;
+    }
+
+    async function getNotes(requestUrl: string) {
+        const response = await fetch(requestUrl, {
             method: "GET",
             headers: {
                 "content-type": "application/json"
@@ -35,13 +46,28 @@ export default function Notes() {
     }
 
     useEffect(() => {
-        getNotes();
+        getNotes("http://localhost:3030/notes");
         console.log("in useEffect")
     }, [])
 
+    function handleSearchInput(e: any) {
+        const lowerCase = e.target.value.toLowerCase();
+        if (lowerCase === "") {
+            getNotes("http://localhost:3030/notes");
+            setCurrentSearchQuery("");
+        }
+        else {
+            setCurrentSearchQuery(lowerCase);
+        }
+    }
+
+    function handleSearching() {
+        console.log(currentSearchQuery);
+        getNotes(constructUrl());
+    }
 
     function updateNoteList() {
-        getNotes();
+        getNotes("http://localhost:3030/notes");
         setCurrentNote({
             created: 0,
             files: [],
@@ -74,7 +100,7 @@ export default function Notes() {
             setCurrentNote(data);
             console.log(data.id);
         }
-        getNotes();
+        getNotes("http://localhost:3030/notes");
     }
 
     function handleCreatingNote() {
@@ -89,7 +115,7 @@ export default function Notes() {
 
     return (
         <div className="notes-page-container">
-            <Header handleCreatingNote={handleCreatingNote} />
+            <Header handleSearching={handleSearching} handleSearchInput={handleSearchInput} handleCreatingNote={handleCreatingNote} />
             <Aside currentNoteList={currentNoteList} handleChoosingNote={handleChoosingNote} />
             <Note currentNote={currentNote} updateNoteList={updateNoteList} />
         </div>

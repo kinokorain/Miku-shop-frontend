@@ -13,8 +13,6 @@ export default function Note(props: { currentNote: NoteType, updateNoteList: () 
         console.log("in useEffect")
     }, [props.currentNote.title, props.currentNote.text])
 
-
-
     async function updateNote() {
         console.log(props.currentNote.id);
         const url = "http://localhost:3030/notes/" + props.currentNote.id;
