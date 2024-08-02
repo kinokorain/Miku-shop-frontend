@@ -6,6 +6,8 @@
     grid-column-start: 1;
     grid-column-end: 5;
     border: solid #fff 1px;
+    display: flex;
+    justify-content: space-around;
 }
 
 aside {

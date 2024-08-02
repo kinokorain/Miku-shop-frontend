@@ -19,6 +19,8 @@ export default function Notes() {
     });
     const [currentNoteList, setCurrentNoteList] = useState<NoteType[]>([]);
     const [currentSearchQuery, setCurrentSearchQuery] = useState<string>("");
+    const [sortType, setSortType] = useState<boolean>(true);
+    const [sortBy, setSortBy] = useState<string>("")
 
     //function for constructing url of request to API
     function constructUrl() {
@@ -27,6 +29,7 @@ export default function Notes() {
         let requestUrl: string;
         // eslint-disable-next-line prefer-const
         requestUrl = baseUrl + searchQuery;
+
         return requestUrl;
     }
 
@@ -114,9 +117,18 @@ export default function Notes() {
         setCurrentNote(note);
     }
 
+    function handleSortTypeChange() {
+        setSortType(!sortType);
+        console.log(sortType);
+    }
+
+    function handleSortByChange(sort: string) {
+        setSortBy(sort);
+    }
+
     return (
         <div className="notes-page-container">
-            <Header handleSearching={handleSearching} handleSearchInput={handleSearchInput} handleCreatingNote={handleCreatingNote} />
+            <Header handleSortByChange={handleSortByChange} sortType={sortType} handleSortTypeChange={handleSortTypeChange} handleSearching={handleSearching} handleSearchInput={handleSearchInput} handleCreatingNote={handleCreatingNote} />
             <Aside currentNoteList={currentNoteList} handleChoosingNote={handleChoosingNote} />
             <Note currentNote={currentNote} updateNoteList={updateNoteList} />
         </div>
