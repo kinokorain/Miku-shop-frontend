@@ -56,9 +56,9 @@ export default function Notes() {
     }
 
     useEffect(() => {
-        getNotes("http://localhost:3030/notes");
+        getNotes(constructUrl());
         console.log("in useEffect")
-    }, [])
+    }, [sortType, sortBy])
 
     function handleSearchInput(e: any) {
         const lowerCase = e.target.value.toLowerCase();
@@ -131,7 +131,6 @@ export default function Notes() {
 
     function handleSortByChange(sort: string) {
         setSortBy(sort);
-
     }
 
     return (
