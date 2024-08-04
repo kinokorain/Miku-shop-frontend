@@ -18,12 +18,12 @@ export default function Aside(props: { currentNoteList: NoteType[], handleChoosi
             <ul className="note-list">
                 {props.currentNoteList.map((note) => {
                     if (note.title == "") {
-                        return <li className="note-list-item" onClick={() => {
+                        return <li key={note.id} className="note-list-item" onClick={() => {
                             props.handleChoosingNote(note);
                         }}>-</li>
                     }
                     else {
-                        return <li className="note-list-item" onClick={() => {
+                        return <li key={note.id} className="note-list-item" onClick={() => {
                             props.handleChoosingNote(note);
 
                         }}>{note.title}</li>

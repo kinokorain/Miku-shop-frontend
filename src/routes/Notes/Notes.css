@@ -8,6 +8,7 @@
     border: solid #fff 1px;
     display: flex;
     justify-content: space-around;
+    align-items: center;
 }
 
 aside {
@@ -120,3 +121,17 @@ ul {
     margin-inline: .5em;
     margin-top: 1em;
 }
+
+/* soritng */
+
+.sort-buttons-container {
+    display: flex;
+    position: absolute;
+}
+
+.filter-buttons-container {
+    display: flex;
+    position: absolute;
+}
+
+.sort-buttons-container button {}
