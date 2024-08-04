@@ -6,7 +6,7 @@ export default function Header(props: { sortType: boolean, handleSortTypeChange:
     return (
         <header className="header">
             <div>
-                {props.sortType ? <button onClick={props.handleSortTypeChange}><i className="fa-solid fa-sort-up"></i></button> : <button onClick={props.handleSortTypeChange}><i className="fa-solid fa-sort-down"></i></button>}
+                {props.sortType ? <button onClick={props.handleSortTypeChange}><i className="fa-solid fa-sort-up"></i>ascending</button> : <button onClick={props.handleSortTypeChange}><i className="fa-solid fa-sort-down"></i>descending</button>}
                 <button onClick={() => setPopupVisible(!popupVisible)}><i className="fa-solid fa-filter"></i></button>
                 {popupVisible ? <div><button onClick={() => props.handleSortByChange("date")}>by date</button><button onClick={() => props.handleSortByChange("date_modif")}>by date modified</button></div> : <></>}
             </div>

@@ -19,17 +19,24 @@ export default function Notes() {
     });
     const [currentNoteList, setCurrentNoteList] = useState<NoteType[]>([]);
     const [currentSearchQuery, setCurrentSearchQuery] = useState<string>("");
-    const [sortType, setSortType] = useState<boolean>(true);
-    const [sortBy, setSortBy] = useState<string>("")
+    const [sortType, setSortType] = useState<boolean>(false);
+    const [sortBy, setSortBy] = useState<string>("date")
 
     //function for constructing url of request to API
     function constructUrl() {
-        const baseUrl = "http://localhost:3030/notes";
-        const searchQuery = "?title=" + currentSearchQuery
+        const baseUrl = "http://localhost:3030/notes?";
+        const searchQuery = "title=" + currentSearchQuery
         let requestUrl: string;
+        let sortTypeString;
+        if (sortType) {
+            sortTypeString = "asc";
+        }
+        else {
+            sortTypeString = "desc";
+        }
         // eslint-disable-next-line prefer-const
-        requestUrl = baseUrl + searchQuery;
-
+        requestUrl = baseUrl + searchQuery + "&sort_by=" + sortBy + "&sort_type=" + sortTypeString;
+        console.log("url in constructUrl:", requestUrl);
         return requestUrl;
     }
 
@@ -124,6 +131,7 @@ export default function Notes() {
 
     function handleSortByChange(sort: string) {
         setSortBy(sort);
+
     }
 
     return (
