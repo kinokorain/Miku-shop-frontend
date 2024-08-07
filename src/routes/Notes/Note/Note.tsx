@@ -67,13 +67,27 @@ export default function Note(props: { currentNote: NoteType, updateNoteList: () 
         })
     }
 
+    const dateCreated = new Date(props.currentNote.created * 1000);
+    let dayCreated = dateCreated.getDate().toString();
+    let monthCreated = dateCreated.getMonth().toString();
+    if (dateCreated.getDate() < 10) {
+        dayCreated = "0" + dateCreated.getDate();
+    }
+    if (dateCreated.getMonth() < 10) {
+        monthCreated = "0" + dateCreated.getMonth();
+    }
+    const dateCreatedString = dayCreated + "." + monthCreated + "." + dateCreated.getFullYear();
+
     return (
         <div className="note-container">
             <div className="flex-input-container">
                 {
-                    props.currentNote.id === 0 ? <></> : <input value={title} type="text" className="note-heading" onChange={(e) => {
+                    props.currentNote.id === 0 ? <></> : <span> <input value={title} type="text" className="note-heading" onChange={(e) => {
                         setTitle(e.target.value);
-                    }} />}
+                    }} />
+                        <span>{dateCreatedString}</span>
+                    </span>}
+
             </div>
             {
                 props.currentNote.id === 0 ? <></> : <textarea value={text} className="note-text" onChange={(e) => {

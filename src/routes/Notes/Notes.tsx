@@ -20,7 +20,7 @@ export default function Notes() {
     const [currentNoteList, setCurrentNoteList] = useState<NoteType[]>([]);
     const [currentSearchQuery, setCurrentSearchQuery] = useState<string>("");
     const [sortType, setSortType] = useState<boolean>(false);
-    const [sortBy, setSortBy] = useState<string>("date")
+    const [sortBy, setSortBy] = useState<string>("date");
 
     //function for constructing url of request to API
     function constructUrl() {

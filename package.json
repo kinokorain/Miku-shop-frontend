@@ -10,7 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/react-date-range": "^1.4.9",
+    "@wojtekmaj/react-daterange-picker": "^6.0.0",
+    "date-fns": "^3.6.0",
     "react": "^18.3.1",
+    "react-date-range": "^2.0.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.24.1"
   },
