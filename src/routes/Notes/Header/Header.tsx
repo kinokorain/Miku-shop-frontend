@@ -2,9 +2,11 @@ import { useState } from "react";
 import 'react-calendar/dist/Calendar.css';
 import DatePicker from "../../../Components/DatePicker";
 
-export default function Header(props: { sortType: boolean, handleSortTypeChange: () => void, handleSortByChange: (sort: string) => void, handleCreatingNote: () => void, handleSearchInput: (e: any) => void, handleSearching: (e) => void }) {
+export default function Header(props: { handleResetfiltering: () => void, handleFiltering: () => void, handleDateRangeChange: (startDate: number, endDate: number) => void, sortType: boolean, handleSortTypeChange: () => void, handleSortByChange: (sort: string) => void, handleCreatingNote: () => void, handleSearchInput: (e: any) => void, handleSearching: (e) => void }) {
     const [popupSortingVisible, setPopupSortingVisible] = useState<boolean>(false);
     const [popupFilteringVisible, setPopupFilteringVisible] = useState<boolean>(false);
+
+    const handleDateRangeChange = props.handleDateRangeChange;
 
     return (
         <header className="header" onClick={() => {
@@ -25,9 +27,11 @@ export default function Header(props: { sortType: boolean, handleSortTypeChange:
                 </div> : <></>}
                 <button className="header-button" onClick={() => setPopupFilteringVisible(!popupFilteringVisible)}><i className="fa-solid fa-filter"></i>filtering</button>
                 {popupFilteringVisible ? <div className="filter-buttons-container">
-                    <div><DatePicker /></div>
+                    <div><DatePicker handleDateRangeChange={handleDateRangeChange} /></div>
                     <div>date_modif sliders</div>
                     <div>tag filtering</div>
+                    <button onClick={props.handleFiltering}>Go!</button>
+                    <button onClick={props.handleResetfiltering}>Reset filters</button>
                 </div> : <></>}
             </div>
 

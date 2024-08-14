@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 // import { redirect } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 
@@ -30,9 +30,9 @@ export default function Login() {
                 navigate("/hub");
             }
         }
-
         sendLoginInfo();
     }
+
     return (
         <section className='reg-page'>
             <h1>
@@ -54,6 +54,7 @@ export default function Login() {
                     <button onClick={LoginUser} type="submit" className="registerbtn">Login</button>
                 </div>
             </form>
+
         </section>
     )
 }

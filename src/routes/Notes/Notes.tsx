@@ -21,6 +21,7 @@ export default function Notes() {
     const [currentSearchQuery, setCurrentSearchQuery] = useState<string>("");
     const [sortType, setSortType] = useState<boolean>(false);
     const [sortBy, setSortBy] = useState<string>("date");
+    const [dateRange, setDateRange] = useState<[number, number]>([0, 0])
 
     //function for constructing url of request to API
     function constructUrl() {
@@ -28,6 +29,9 @@ export default function Notes() {
         const searchQuery = "title=" + currentSearchQuery
         let requestUrl: string;
         let sortTypeString;
+
+        const dateString: string = "&date=" + dateRange[0] + "-" + dateRange[1];
+
         if (sortType) {
             sortTypeString = "asc";
         }
@@ -35,7 +39,7 @@ export default function Notes() {
             sortTypeString = "desc";
         }
         // eslint-disable-next-line prefer-const
-        requestUrl = baseUrl + searchQuery + "&sort_by=" + sortBy + "&sort_type=" + sortTypeString;
+        requestUrl = baseUrl + searchQuery + "&sort_by=" + sortBy + "&sort_type=" + sortTypeString + dateString;
         console.log("url in constructUrl:", requestUrl);
         return requestUrl;
     }
@@ -133,9 +137,23 @@ export default function Notes() {
         setSortBy(sort);
     }
 
+    function handleDateRangeChange(startDate: number, endDate: number) {
+        console.log(startDate, endDate);
+        setDateRange([startDate, endDate]);
+    }
+
+    function handleFiltering() {
+        getNotes(constructUrl());
+    }
+
+    function handleResetfiltering() {
+        getNotes("http://localhost:3030/notes");
+        //maybe set all state to default somehow idk
+    }
+
     return (
         <div className="notes-page-container">
-            <Header handleSortByChange={handleSortByChange} sortType={sortType} handleSortTypeChange={handleSortTypeChange} handleSearching={handleSearching} handleSearchInput={handleSearchInput} handleCreatingNote={handleCreatingNote} />
+            <Header handleResetfiltering={handleResetfiltering} handleFiltering={handleFiltering} handleDateRangeChange={handleDateRangeChange} handleSortByChange={handleSortByChange} sortType={sortType} handleSortTypeChange={handleSortTypeChange} handleSearching={handleSearching} handleSearchInput={handleSearchInput} handleCreatingNote={handleCreatingNote} />
             <Aside currentNoteList={currentNoteList} handleChoosingNote={handleChoosingNote} />
             <Note currentNote={currentNote} updateNoteList={updateNoteList} />
         </div>
