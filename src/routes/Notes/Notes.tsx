@@ -21,7 +21,14 @@ export default function Notes() {
     const [currentSearchQuery, setCurrentSearchQuery] = useState<string>("");
     const [sortType, setSortType] = useState<boolean>(false);
     const [sortBy, setSortBy] = useState<string>("date");
-    const [dateRange, setDateRange] = useState<[number, number]>([0, 0])
+    const [dateRange, setDateRange] = useState<[number, number]>([0, 0]);
+
+    function resetState() {
+        setCurrentSearchQuery("");
+        setSortType(false);
+        setSortBy("date");
+        setDateRange([0, 0]);
+    }
 
     //function for constructing url of request to API
     function constructUrl() {
@@ -149,6 +156,7 @@ export default function Notes() {
     function handleResetfiltering() {
         getNotes("http://localhost:3030/notes");
         //maybe set all state to default somehow idk
+        resetState();
     }
 
     return (

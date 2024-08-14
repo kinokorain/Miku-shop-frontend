@@ -74,7 +74,7 @@ export default function Note(props: { currentNote: NoteType, updateNoteList: () 
         dayCreated = "0" + dateCreated.getDate();
     }
     if (dateCreated.getMonth() < 10) {
-        monthCreated = "0" + dateCreated.getMonth();
+        monthCreated = "0" + (dateCreated.getMonth() + 1);
     }
     const dateCreatedString = dayCreated + "." + monthCreated + "." + dateCreated.getFullYear();
 
