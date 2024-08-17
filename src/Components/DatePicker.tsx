@@ -4,7 +4,7 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRangePicker } from 'react-date-range';
 import { useState } from 'react';
 
-export default function DatePicker(props: { handleDateRangeChange: (startDate: number, endDate: number) => void }) {
+export default function DatePicker(props: { handleDateChange: (startDate: number, endDate: number) => void }) {
     const [dateRange, setDateRange] = useState({
         startDate: new Date(),
         endDate: new Date(),
@@ -32,7 +32,7 @@ export default function DatePicker(props: { handleDateRangeChange: (startDate: n
         // }
 
         //pass the ranges.selection.startDate and endDate to a handle function 
-        props.handleDateRangeChange(dateToUnixEpoch(ranges.selection.startDate), dateToUnixEpoch(ranges.selection.endDate));
+        props.handleDateChange(dateToUnixEpoch(ranges.selection.startDate), dateToUnixEpoch(ranges.selection.endDate));
     }
 
     return (
