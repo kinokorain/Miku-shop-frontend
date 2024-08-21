@@ -29,9 +29,9 @@ export default function Header(props: { handleResetfiltering: () => void, handle
                 <button className="header-button" onClick={() => setPopupFilteringVisible(!popupFilteringVisible)}><i className="fa-solid fa-filter"></i>filtering</button>
                 {popupFilteringVisible ? <div className="filter-buttons-container">
                     <p>Filter by date:</p>
-                    <div><DatePicker handleDateChange={handleDateRangeChange} /></div>
+                    <div className="date-picker-container"><DatePicker handleDateChange={handleDateRangeChange} /></div>
                     <p>Filter by date modified:</p>
-                    <div><DatePicker handleDateChange={handleDateModifChange} /></div>
+                    <div className="date-picker-container"><DatePicker handleDateChange={handleDateModifChange} /></div>
                     <div>tag filtering</div>
                     <button onClick={props.handleFiltering}>Go!</button>
                     <button onClick={props.handleResetfiltering}>Reset filters</button>

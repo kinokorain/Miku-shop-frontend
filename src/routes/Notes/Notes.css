@@ -59,7 +59,7 @@ ul {
 
 .note-text {
     color: #fff;
-    min-height: 80%;
+    min-height: 70%;
     background-color: #031111;
 }
 
@@ -74,7 +74,6 @@ ul {
     display: flex;
     align-items: center;
 } */
-
 
 .note-text:focus,
 .note-heading:focus {
@@ -152,6 +151,8 @@ ul {
     border: solid #fff 1px;
     padding: 1em;
     left: 50%;
+    overflow-y: scroll;
+    height: 70vh;
 }
 
 .header-button {
