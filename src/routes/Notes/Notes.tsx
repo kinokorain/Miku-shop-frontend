@@ -4,6 +4,7 @@ import Note from "./Note/Note";
 import { useEffect, useState } from "react";
 import './Notes.css'
 import NoteType from "../../Types/Note.ts"
+import TagType from "../../Types/Tag.ts"
 
 export default function Notes() {
     const [currentNote, setCurrentNote] = useState<NoteType>({
@@ -23,6 +24,8 @@ export default function Notes() {
     const [sortBy, setSortBy] = useState<string>("date");
     const [dateRange, setDateRange] = useState<[number, number]>([0, 0]);
     const [dateModif, setDateModif] = useState<[number, number]>([0, 0]);
+    const [userTags, setUserTags] = useState<TagType[]>([]);
+
 
     function resetState() {
         setCurrentSearchQuery("");
@@ -70,6 +73,7 @@ export default function Notes() {
 
     useEffect(() => {
         getNotes(constructUrl());
+        getUserTags();
         console.log("in useEffect")
     }, [sortType, sortBy])
 
@@ -166,11 +170,24 @@ export default function Notes() {
         resetState();
     }
 
+    async function getUserTags() {
+        const response = await fetch("http://localhost:3030/tags", {
+            method: "GET",
+            headers: {
+                "content-type": "application/json"
+            },
+            credentials: "include",
+        })
+        const body = await response.json();
+        setUserTags(body.data.tags)
+    }
+
     return (
         <div className="notes-page-container">
+            {/* <button onClick={getUserTags}>tags</button> */}
             <Header handleResetfiltering={handleResetfiltering} handleFiltering={handleFiltering} handleDateRangeChange={handleDateRangeChange} handleDateModifChange={handleDateModifChange} handleSortByChange={handleSortByChange} sortType={sortType} handleSortTypeChange={handleSortTypeChange} handleSearching={handleSearching} handleSearchInput={handleSearchInput} handleCreatingNote={handleCreatingNote} />
             <Aside currentNoteList={currentNoteList} handleChoosingNote={handleChoosingNote} />
-            <Note currentNote={currentNote} updateNoteList={updateNoteList} />
+            <Note userTags={userTags} currentNote={currentNote} updateNoteList={updateNoteList} />
         </div>
     );
 }

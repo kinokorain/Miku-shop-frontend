@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import NoteType from "../../../Types/Note.ts"
 import TagType from "../../../Types/Tag.ts"
 
-export default function Note(props: { currentNote: NoteType, updateNoteList: () => void }) {
+export default function Note(props: { userTags: TagType[], currentNote: NoteType, updateNoteList: () => void }) {
     const [text, setText] = useState("");
     const [title, setTitle] = useState("");
     const [deletePopupVisible, setDeletePopupVisible] = useState<boolean>(false)
@@ -72,8 +72,6 @@ export default function Note(props: { currentNote: NoteType, updateNoteList: () 
         })
     }
 
-
-
     const dateCreated = new Date(props.currentNote.created * 1000);
     let dayCreated = dateCreated.getDate().toString();
     let monthCreated = dateCreated.getMonth().toString();
@@ -112,12 +110,12 @@ export default function Note(props: { currentNote: NoteType, updateNoteList: () 
                     props.currentNote.id === 0 ? <></> : <span><span>{dateCreatedString}</span> <input value={title} type="text" className="note-heading" onChange={(e) => {
                         setTitle(e.target.value);
                     }} />
-                        <div>List of tags<button onClick={CreateTag}>+</button></div>
+                        <div>List of tags<button onClick={toggleTagPopup}>+</button></div>
                     </span>}
             </div>
-            {tagArray ? <div> {tagArray.map((tag) => {
-                return (<input value={tag.name} />)
-            })}</div> : <></>}
+            {tagPopupVisible ? <div><button>+</button> {props.userTags.map((tag) => {
+                return (<input value={tag.name} key={tag.id} />)
+            })}<button>save</button><button>delete</button></div> : <></>}
             {
                 props.currentNote.id === 0 ? <></> : <textarea value={text} className="note-text" onChange={(e) => {
                     setText(e.target.value);
