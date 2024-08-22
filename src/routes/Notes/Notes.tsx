@@ -187,7 +187,7 @@ export default function Notes() {
             {/* <button onClick={getUserTags}>tags</button> */}
             <Header handleResetfiltering={handleResetfiltering} handleFiltering={handleFiltering} handleDateRangeChange={handleDateRangeChange} handleDateModifChange={handleDateModifChange} handleSortByChange={handleSortByChange} sortType={sortType} handleSortTypeChange={handleSortTypeChange} handleSearching={handleSearching} handleSearchInput={handleSearchInput} handleCreatingNote={handleCreatingNote} />
             <Aside currentNoteList={currentNoteList} handleChoosingNote={handleChoosingNote} />
-            <Note userTags={userTags} currentNote={currentNote} updateNoteList={updateNoteList} />
+            <Note getUserTags={getUserTags} userTags={userTags} currentNote={currentNote} updateNoteList={updateNoteList} />
         </div>
     );
 }

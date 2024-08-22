@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import NoteType from "../../../Types/Note.ts"
 import TagType from "../../../Types/Tag.ts"
 
-export default function Note(props: { userTags: TagType[], currentNote: NoteType, updateNoteList: () => void }) {
+export default function Note(props: { getUserTags: () => void, userTags: TagType[], currentNote: NoteType, updateNoteList: () => void }) {
     const [text, setText] = useState("");
     const [title, setTitle] = useState("");
     const [deletePopupVisible, setDeletePopupVisible] = useState<boolean>(false)
@@ -86,6 +86,11 @@ export default function Note(props: { userTags: TagType[], currentNote: NoteType
     // const testArrOfTags: string[] = ["hi"];
     const tagArray: TagType[] = props.currentNote.tags;
 
+    //в целом мне нужно:
+    //1) Сначала создать тэг, в момент создания уже должно быть известно его имя, либо я
+    //создаю его пустым и потом редачу.
+    //2) Добавить возможность прикреплять этот тег к конкретной заметке
+
     async function CreateTag() {
         console.log(props.currentNote.id);
         const url = "http://localhost:3030/tags";
@@ -95,12 +100,27 @@ export default function Note(props: { userTags: TagType[], currentNote: NoteType
                 "content-type": "application/json"
             },
             body: JSON.stringify({
-                "name": "Journal"
+                "name": ""
             }),
             credentials: "include",
         })
         const body = await response.json();
         console.log("body in CreateTag:", body);
+        props.getUserTags();
+    }
+
+    async function DeleteTag(tagId: number) {
+        console.log(props.currentNote.id);
+        const url = "http://localhost:3030/tags/" + tagId;
+        const response = await fetch(url, {
+            method: "DELETE",
+            headers: {
+                "content-type": "application/json"
+            },
+            credentials: "include",
+        })
+        const body = await response.json();
+        props.getUserTags();
     }
 
     return (
@@ -113,9 +133,9 @@ export default function Note(props: { userTags: TagType[], currentNote: NoteType
                         <div>List of tags<button onClick={toggleTagPopup}>+</button></div>
                     </span>}
             </div>
-            {tagPopupVisible ? <div><button>+</button> {props.userTags.map((tag) => {
-                return (<input value={tag.name} key={tag.id} />)
-            })}<button>save</button><button>delete</button></div> : <></>}
+            {tagPopupVisible ? <div> {props.userTags.map((tag) => {
+                return (<div><button>+</button><input value={tag.name} key={tag.id} /><button>save</button><button onClick={() => DeleteTag(tag.id)}>delete</button></div>)
+            })}<br></br><button onClick={CreateTag}>create new tag</button></div> : <></>}
             {
                 props.currentNote.id === 0 ? <></> : <textarea value={text} className="note-text" onChange={(e) => {
                     setText(e.target.value);
