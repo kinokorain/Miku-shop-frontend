@@ -84,7 +84,6 @@ export default function Note(props: { getUserTags: () => void, userTags: TagType
     const dateCreatedString = dayCreated + "." + monthCreated + "." + dateCreated.getFullYear();
 
     // const testArrOfTags: string[] = ["hi"];
-    const tagArray: TagType[] = props.currentNote.tags;
 
     //в целом мне нужно:
     //1) Сначала создать тэг, в момент создания уже должно быть известно его имя, либо я
@@ -140,6 +139,23 @@ export default function Note(props: { getUserTags: () => void, userTags: TagType
         props.getUserTags();
     }
 
+    async function AssignTag(tagId: number) {
+        console.log(props.currentNote.id);
+        const url = "http://localhost:3030/notes/" + props.currentNote.id + "/tag";
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify({
+                "tag_id": tagId
+            }),
+            credentials: "include",
+        })
+        const body = await response.json();
+    }
+
+
     return (
         <div className="note-container">
             <div className="flex-input-container">
@@ -147,11 +163,14 @@ export default function Note(props: { getUserTags: () => void, userTags: TagType
                     props.currentNote.id === 0 ? <></> : <span><span>{dateCreatedString}</span> <input value={title} type="text" className="note-heading" onChange={(e) => {
                         setTitle(e.target.value);
                     }} />
-                        <div>List of tags<button onClick={toggleTagPopup}>+</button></div>
+                        <div>List of tags: <ul>{props.currentNote.tags.map((tag) => {
+                            return (<li>{tag.name}</li>)
+                        })}</ul></div>
+                        <button onClick={toggleTagPopup}>+</button>
                     </span>}
             </div>
             {tagPopupVisible ? <div> {props.userTags.map((tag) => {
-                return (<div><button>+</button><input defaultValue={tag.name} id={"tag" + tag.id} key={tag.id} /><button onClick={() => {
+                return (<div><button onClick={() => AssignTag(tag.id)}>+</button><input defaultValue={tag.name} id={"tag" + tag.id} key={tag.id} /><button onClick={() => {
                     let currentTagName: string = "";
                     if (document.getElementById("tag" + tag.id)) {
                         currentTagName = document.getElementById("tag" + tag.id).value;
