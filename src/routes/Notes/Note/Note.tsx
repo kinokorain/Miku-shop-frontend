@@ -123,6 +123,23 @@ export default function Note(props: { getUserTags: () => void, userTags: TagType
         props.getUserTags();
     }
 
+    async function UpdateTag(tagId: number, tagName: string) {
+        console.log(props.currentNote.id);
+        const url = "http://localhost:3030/tags/" + tagId;
+        const response = await fetch(url, {
+            method: "PATCH",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify({
+                "name": tagName
+            }),
+            credentials: "include",
+        })
+        const body = await response.json();
+        props.getUserTags();
+    }
+
     return (
         <div className="note-container">
             <div className="flex-input-container">
@@ -134,7 +151,14 @@ export default function Note(props: { getUserTags: () => void, userTags: TagType
                     </span>}
             </div>
             {tagPopupVisible ? <div> {props.userTags.map((tag) => {
-                return (<div><button>+</button><input value={tag.name} key={tag.id} /><button>save</button><button onClick={() => DeleteTag(tag.id)}>delete</button></div>)
+                return (<div><button>+</button><input defaultValue={tag.name} id={"tag" + tag.id} key={tag.id} /><button onClick={() => {
+                    let currentTagName: string = "";
+                    if (document.getElementById("tag" + tag.id)) {
+                        currentTagName = document.getElementById("tag" + tag.id).value;
+                    }
+
+                    UpdateTag(tag.id, currentTagName);
+                }}>save</button><button onClick={() => DeleteTag(tag.id)}>delete</button></div>)
             })}<br></br><button onClick={CreateTag}>create new tag</button></div> : <></>}
             {
                 props.currentNote.id === 0 ? <></> : <textarea value={text} className="note-text" onChange={(e) => {
